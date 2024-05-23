@@ -1,0 +1,17 @@
+spring:
+  application:
+      name: productservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pair4crm
+    username: postgres
+    password: 1711
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+
+
+
+server:
+  port: 9090
