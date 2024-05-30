@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: customerservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/java3-srs
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8081
