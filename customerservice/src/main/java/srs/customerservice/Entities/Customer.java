@@ -18,11 +18,11 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="customer_id")
-    private int customerID;
+    private String customerID;
     @Column(name="nationality_id")
-    private int nationalityID;
+    private String nationalityID;
     @Column(name="account_number")
-    private int accountNumber;
+    private String accountNumber;
     @Column(name="first_name")
     private String firstName;
     @Column(name="last_name")
