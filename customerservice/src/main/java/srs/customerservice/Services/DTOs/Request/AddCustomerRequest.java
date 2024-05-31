@@ -1,15 +1,14 @@
 package srs.customerservice.Services.DTOs.Request;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -38,9 +37,12 @@ public class AddCustomerRequest {
     @NotBlank(message = "This field is required")
     private String gender;
     @NotBlank(message = "Doğum tarihi boş olamaz")
-    @Pattern(regexp = "(0[1-9]|[12][0-9]|3[01])/((0[1-9]|1[0-2])|13)/\\d{4}", message = "Doğum tarihi 'Gün/Ay/Yıl' formatında olmalıdır")
+    @NotNull(message = "This field is required")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
+    //@Pattern(regexp = "(0[1-9]|[12][0-9]|3[01])/((0[1-9]|1[0-2])|13)/\\d{4}", message = "Doğum tarihi 'Gün/Ay/Yıl' formatında olmalıdır")
     //@ValidDate(message = "Doğum tarihi 'Gün/Ay/Yıl' formatında olmalı ve geçerli bir tarih olmalıdır")
-    private Date birthDate;
+
 
 
     /*@OneToMany
