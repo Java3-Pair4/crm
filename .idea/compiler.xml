@@ -2,7 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for customerservice" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="orderservice" />
+      </profile>
+      <profile name="Annotation profile for productservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -14,13 +20,8 @@
         </processorPath>
         <module name="productservice (1)" />
         <module name="customerservice" />
+        <module name="productservice (2)" />
         <module name="productservice" />
-      </profile>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="orderservice" />
       </profile>
     </annotationProcessing>
   </component>
@@ -30,6 +31,7 @@
       <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
       <module name="productservice (1)" options="-parameters" />
+      <module name="productservice (2)" options="-parameters" />
     </option>
   </component>
 </project>

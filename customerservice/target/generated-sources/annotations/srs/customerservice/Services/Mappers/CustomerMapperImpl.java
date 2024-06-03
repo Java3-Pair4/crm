@@ -5,11 +5,12 @@ import java.util.Date;
 import javax.annotation.processing.Generated;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
+import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-31T20:50:01+0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
+    date = "2024-06-03T15:38:49+0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
 
@@ -21,9 +22,7 @@ public class CustomerMapperImpl implements CustomerMapper {
 
         Customer customer = new Customer();
 
-        if ( request.getNationalityID() != null ) {
-            customer.setNationalityID( request.getNationalityID().intValue() );
-        }
+        customer.setNationalityID( request.getNationalityID() );
         customer.setAccountNumber( request.getAccountNumber() );
         customer.setFirstName( request.getFirstName() );
         customer.setLastName( request.getLastName() );
@@ -36,5 +35,27 @@ public class CustomerMapperImpl implements CustomerMapper {
         }
 
         return customer;
+    }
+
+    @Override
+    public AddCustomerResponse customerFromAddResponse(Customer customer) {
+        if ( customer == null ) {
+            return null;
+        }
+
+        AddCustomerResponse addCustomerResponse = new AddCustomerResponse();
+
+        if ( customer.getId() != null ) {
+            addCustomerResponse.setId( customer.getId().intValue() );
+        }
+        addCustomerResponse.setAccountNumber( customer.getAccountNumber() );
+        addCustomerResponse.setFirstName( customer.getFirstName() );
+        addCustomerResponse.setMiddleName( customer.getMiddleName() );
+        addCustomerResponse.setLastName( customer.getLastName() );
+        addCustomerResponse.setFatherName( customer.getFatherName() );
+        addCustomerResponse.setMotherName( customer.getMotherName() );
+        addCustomerResponse.setGender( customer.getGender() );
+
+        return addCustomerResponse;
     }
 }
