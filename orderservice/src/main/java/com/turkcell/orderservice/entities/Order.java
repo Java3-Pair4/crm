@@ -21,5 +21,5 @@ public class Order {
     private String customerID;
     private double totalPrice;
     private String serviceAddress;
-    private int piece;
+    private int price;
 }
