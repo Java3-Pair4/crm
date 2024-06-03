@@ -3,10 +3,8 @@ package srs.customerservice.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.DTOs.Request.SearchCustomerRequest;
@@ -21,11 +19,12 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
 
-    @PostMapping("search")
-    public List<SearchCustomerResponse> search(@RequestBody SearchCustomerRequest request)
+  /* @GetMapping("/{id}")
+    public GetSearchCustomerResponse (@RequestBody @Valid SearchCustomerRequest request)
     {
         return customerService.search(request);
-    }
+    }*/
+
     @PostMapping
     public AddCustomerResponse add(@RequestBody @Valid AddCustomerRequest request)
     {
