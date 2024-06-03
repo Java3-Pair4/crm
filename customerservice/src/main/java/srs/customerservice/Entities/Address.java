@@ -24,7 +24,7 @@ public class Address {
 
     private String street;
 
-    private Long houseNumber;
+    private String houseNumber;
 
     private String description;
 }

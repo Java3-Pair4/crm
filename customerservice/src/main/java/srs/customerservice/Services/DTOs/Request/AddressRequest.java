@@ -1,26 +1,29 @@
 package srs.customerservice.Services.DTOs.Request;
 
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
+import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class AddressRequest {
 
-    @NotBlank(message = "This field is required")
+    @NotEmpty(message = "This field is required")
     private String city;
 
-    @NotBlank(message = "This field is required")
+    @NotEmpty(message = "This field is required")
     private String district;
 
-    @NotBlank(message = "This field is required")
+    @NotEmpty(message = "This field is required")
     private String street;
 
 
-    @NotBlank(message = "This field is required")
-    private Long houseNumber;
+    @NotEmpty(message = "This field is required")
+    private String houseNumber;
 
 
-    @NotBlank(message = "This field is required")
+    @NotEmpty(message = "This field is required")
     private String description;
 }
