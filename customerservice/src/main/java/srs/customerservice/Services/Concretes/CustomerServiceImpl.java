@@ -2,7 +2,7 @@ package srs.customerservice.Services.Concretes;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import srs.customerservice.Repository.CustomerRepository;
+import srs.customerservice.Repositories.CustomerRepository;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.SearchCustomerRequest;
