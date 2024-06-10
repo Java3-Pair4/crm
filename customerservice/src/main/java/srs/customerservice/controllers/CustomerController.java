@@ -19,12 +19,6 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
 
-  /* @GetMapping("/{id}")
-    public GetSearchCustomerResponse (@RequestBody @Valid SearchCustomerRequest request)
-    {
-        return customerService.search(request);
-    }*/
-
     @PostMapping
     public AddCustomerResponse add(@RequestBody @Valid AddCustomerRequest request)
     {

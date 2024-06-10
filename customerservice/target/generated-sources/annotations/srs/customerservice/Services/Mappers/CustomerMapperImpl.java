@@ -5,13 +5,11 @@ import java.util.Date;
 import javax.annotation.processing.Generated;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
-import srs.customerservice.Services.DTOs.Request.SearchCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
-import srs.customerservice.Services.DTOs.Response.SearchCustomerResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-03T17:04:52+0300",
+    date = "2024-06-10T17:52:54+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
@@ -24,6 +22,7 @@ public class CustomerMapperImpl implements CustomerMapper {
 
         Customer customer = new Customer();
 
+        customer.setCustomerID( request.getCustomerID() );
         customer.setNationalityID( request.getNationalityID() );
         customer.setAccountNumber( request.getAccountNumber() );
         customer.setFirstName( request.getFirstName() );
@@ -59,35 +58,5 @@ public class CustomerMapperImpl implements CustomerMapper {
         addCustomerResponse.setGender( customer.getGender() );
 
         return addCustomerResponse;
-    }
-
-    @Override
-    public Customer customerFromSearchRequest(SearchCustomerRequest request) {
-        if ( request == null ) {
-            return null;
-        }
-
-        Customer customer = new Customer();
-
-        customer.setAccountNumber( request.getAccountNumber() );
-        customer.setFirstName( request.getFirstName() );
-        customer.setLastName( request.getLastName() );
-
-        return customer;
-    }
-
-    @Override
-    public SearchCustomerResponse customerSearchResponse(Customer customer) {
-        if ( customer == null ) {
-            return null;
-        }
-
-        SearchCustomerResponse searchCustomerResponse = new SearchCustomerResponse();
-
-        searchCustomerResponse.setAccountNumber( customer.getAccountNumber() );
-        searchCustomerResponse.setFirstName( customer.getFirstName() );
-        searchCustomerResponse.setLastName( customer.getLastName() );
-
-        return searchCustomerResponse;
     }
 }

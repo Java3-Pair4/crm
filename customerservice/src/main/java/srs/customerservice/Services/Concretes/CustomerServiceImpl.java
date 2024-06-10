@@ -21,19 +21,8 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
-    /*@Override
-    public Customer getById(String id) {
-        return customerRepository.findById(id).get();
-    }*/
 
-    @Override
-    public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
 
-        int result = customerRepository.findByNationalityId(request.getNationalityId());
-        //Customer customer = CustomerMapper.INSTANCE.customerFromSearchRequest(request);
-        //customer = customerRepository.save(customer);
-        return List.of(CustomerMapper.INSTANCE.customerSearchResponse(customer));
-    }
 
     @Override
    public AddCustomerResponse add(AddCustomerRequest request) {

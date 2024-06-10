@@ -17,6 +17,6 @@ public interface CustomerMapper {
     Customer customerFromAddRequest(AddCustomerRequest request);
     AddCustomerResponse customerFromAddResponse(Customer customer);
 
-    Customer customerFromSearchRequest(SearchCustomerRequest request);
-    SearchCustomerResponse customerSearchResponse(Customer customer);
+    //Customer customerFromSearchRequest(SearchCustomerRequest request);
+    //SearchCustomerResponse customerSearchResponse(Customer customer);
 }

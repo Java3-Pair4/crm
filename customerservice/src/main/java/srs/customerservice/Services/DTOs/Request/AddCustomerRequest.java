@@ -23,6 +23,8 @@ import java.util.List;
 public class AddCustomerRequest {
 
 
+    //@Pattern(regexp = "[0-9\\s]{8}")
+    @Size(min=7, max=7)
     private String customerID;
 
     @NotEmpty(message = "Nationality ID cannot be empty")

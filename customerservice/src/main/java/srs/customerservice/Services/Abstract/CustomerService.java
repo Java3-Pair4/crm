@@ -11,9 +11,7 @@ import java.util.List;
 
 
 public interface CustomerService {
-    List<SearchCustomerResponse> search(SearchCustomerRequest request);
+    //List<SearchCustomerResponse> search(SearchCustomerRequest request);
     AddCustomerResponse add(AddCustomerRequest request);
 
-    //Customer getById(String id);
-    //void add(AddCustomerRequest request);
 }
