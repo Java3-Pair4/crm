@@ -1,6 +1,6 @@
 spring:
   application:
-    name: productservice
+      name: productservice
   datasource:
     url: jdbc:postgresql://localhost:5432/java3-srs
     username: postgres
@@ -9,5 +9,13 @@ spring:
     hibernate:
       ddl-auto: update
 
+
 server:
-  port: 8083
+  port: 8082
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/

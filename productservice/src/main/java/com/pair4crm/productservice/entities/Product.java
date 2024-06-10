@@ -22,10 +22,9 @@ public class Product {
     @Column(name="name")
     private String name;
 
-    //price?
 
-    @Column(name="items")
-    private String items;
+    @Column(name="prodChar")
+    private String prodChar;
 
 
     // TODO: Check the items
