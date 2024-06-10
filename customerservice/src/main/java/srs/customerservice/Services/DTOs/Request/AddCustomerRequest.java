@@ -1,13 +1,19 @@
 package srs.customerservice.Services.DTOs.Request;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import srs.customerservice.Entities.Address;
+import srs.customerservice.Entities.Contact;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -17,15 +23,16 @@ import java.time.LocalDate;
 public class AddCustomerRequest {
 
 
+    private String customerID;
 
     @NotEmpty(message = "Nationality ID cannot be empty")
     @Pattern(regexp = "\\d{11}")
     private String nationalityID;
 
-
-
-
     private String accountNumber;
+
+    @Pattern(regexp = "[0-9\\s]{12}")
+    private String gsmNumber;
 
     @NotEmpty(message = "This field is required")
     @Size(max = 50)
@@ -49,11 +56,11 @@ public class AddCustomerRequest {
     private LocalDate birthDate;
 
 
-    /*@OneToMany
+    @OneToMany
     @JoinColumn(name = "address_id")
-    private List<Address> addresses;*/
+    private List<Address> addresses;
 
-   /* @OneToOne
+    @OneToOne
     @JoinColumn(name = "contact_id")
-    private Contact contact;*/
+    private Contact contact;
 }

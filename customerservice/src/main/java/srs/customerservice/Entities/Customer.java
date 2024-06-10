@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -37,5 +38,12 @@ public class Customer {
     private String gender;
     @Column(name="birth_date")
     private Date birthDate;
+    @OneToMany
+    @JoinColumn(name = "address_id")
+    private List<Address> addresses;
+
+    @OneToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
 
 }
