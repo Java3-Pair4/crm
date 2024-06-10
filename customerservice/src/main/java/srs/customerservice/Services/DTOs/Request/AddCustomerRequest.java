@@ -23,17 +23,17 @@ import java.util.List;
 public class AddCustomerRequest {
 
 
-    //@Pattern(regexp = "[0-9\\s]{8}")
+
     @Size(min=7, max=7)
     private String customerID;
 
     @NotEmpty(message = "Nationality ID cannot be empty")
     @Pattern(regexp = "\\d{11}")
     private String nationalityID;
-
+    @Pattern(regexp = "[0-9\\s]{8}")
     private String accountNumber;
 
-    @Pattern(regexp = "[0-9\\s]{12}")
+    @Pattern(regexp = "[0-9\\d{12}]")
     private String gsmNumber;
 
     @NotEmpty(message = "This field is required")
