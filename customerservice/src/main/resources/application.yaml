@@ -2,7 +2,7 @@ spring:
   application:
     name: customerservice
   datasource:
-    url: jdbc:postgresql://localhost:5432/java3-srs
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 1234
   jpa:
