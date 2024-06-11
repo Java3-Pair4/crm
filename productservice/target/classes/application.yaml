@@ -2,7 +2,7 @@ spring:
   application:
       name: productservice
   datasource:
-    url: jdbc:postgresql://localhost:5432/java3-srs
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 1234
   jpa:
@@ -13,3 +13,9 @@ spring:
 server:
   port: 8082
 
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
