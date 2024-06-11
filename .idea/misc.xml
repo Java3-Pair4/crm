@@ -11,10 +11,12 @@
         <option value="$PROJECT_DIR$/../CRM-Project/customerservice/pom.xml" />
         <option value="$PROJECT_DIR$/discoveryserver/pom.xml" />
         <option value="$PROJECT_DIR$/basketservice/pom.xml" />
+        <option value="$USER_HOME$/Downloads/crm-main-proje/crm-main/orderservice/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$USER_HOME$/Downloads/crm-main-proje/crm-main/orderservice/pom.xml" />
         <option value="$PROJECT_DIR$/../CRM-Project/customerservice/pom.xml" />
       </set>
     </option>
