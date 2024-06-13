@@ -5,12 +5,9 @@ import com.pair4crm.productservice.entities.Categori;
 import com.pair4crm.productservice.repositories.CategoriRepository;
 import com.pair4crm.productservice.services.abstracts.CategoriService;
 import com.pair4crm.productservice.services.mappers.CategoriMapper;
-import com.pair4crm.productservice.services.mappers.ProductMapper;
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 import java.util.List;
 
 
@@ -42,6 +39,11 @@ public class CategoriServiceImpl implements CategoriService {
         return getCategoriResponses;
 
     }
+
+
+
+
+
 
 
 }

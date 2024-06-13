@@ -3,7 +3,6 @@ package com.pair4crm.productservice.services.mappers;
 import com.pair4crm.productservice.dtos.requests.AddProductRequest;
 import com.pair4crm.productservice.entities.Categori;
 import com.pair4crm.productservice.entities.Product;
-import jdk.jfr.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

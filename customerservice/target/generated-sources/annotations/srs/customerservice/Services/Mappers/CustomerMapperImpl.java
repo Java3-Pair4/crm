@@ -9,8 +9,8 @@ import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-10T22:12:26+0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.3 (Amazon.com Inc.)"
+    date = "2024-06-11T19:19:09+0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
 
