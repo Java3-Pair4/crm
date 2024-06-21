@@ -1,12 +1,15 @@
 package srs.customerservice.Services.Concretes;
 
 import org.springframework.stereotype.Service;
+import srs.customerservice.Entities.Address;
 import srs.customerservice.Entities.Customer;
+import srs.customerservice.Repositories.AddressRepository;
 import srs.customerservice.Repositories.CustomerRepository;
 import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -24,10 +27,12 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final AddressService addressService;
+    private final AddressRepository addressRepository;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService, AddressRepository addressRepository) {
         this.customerRepository = customerRepository;
         this.addressService = addressService;
+        this.addressRepository = addressRepository;
     }
 
     @Override
@@ -104,10 +109,23 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addAddress(int customerId, AddAddressRequest request) {
+    public void addAddress( AddAddressRequest request) {
 
         addressService.addAddress(request);
 
+    }
+
+    @Override
+    public void updateAddress(int customerId, UpdateAddressRequest request) {
+
+        Address adres = addressRepository.findById(customerId);
+
+        adres.setCity(request.getCity());
+        adres.setDistrict(request.getDistrict());
+        adres.setStreet(request.getStreet());
+        adres.setDescription(request.getDescription());
+        adres.setHouseNumber(request.getHouseNumber());
+        adres.setId(request.getCustomerId());
     }
 
 

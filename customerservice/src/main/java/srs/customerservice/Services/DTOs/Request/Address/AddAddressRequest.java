@@ -1,8 +1,13 @@
 package srs.customerservice.Services.DTOs.Request.Address;
 
 import jakarta.validation.constraints.NotEmpty;
+import srs.customerservice.Entities.Address;
+
+import java.util.List;
 
 public class AddAddressRequest {
+
+
     @NotEmpty(message = "City boş olamaz")
     private String city;
 
@@ -20,13 +25,17 @@ public class AddAddressRequest {
     @NotEmpty(message = "Description alanı boş olamaz")
     private String description;
 
-    public AddAddressRequest(String city, String district, String street, String houseNumber, String description) {
+    public AddAddressRequest(int customerId, String city, String district, String street, String houseNumber, String description) {
+
         this.city = city;
         this.district = district;
         this.street = street;
         this.houseNumber = houseNumber;
         this.description = description;
     }
+
+
+
 
     public String getCity() {
         return city;
@@ -64,7 +73,5 @@ public class AddAddressRequest {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+
 }

@@ -1,10 +1,14 @@
 package srs.customerservice.Services.DTOs.Request.Address;
 
 import jakarta.validation.constraints.NotBlank;
+import srs.customerservice.Entities.Address;
+
+import java.util.List;
 
 public class UpdateAddressRequest {
 
-
+    private int customerId;
+    private List<Address> addresses;
 
     @NotBlank(message = "City alanı boş bırakılamaz")
     private String city;
@@ -17,12 +21,35 @@ public class UpdateAddressRequest {
     @NotBlank(message = "Description alanı boş bırakılamaz")
     private String description;
 
-    public UpdateAddressRequest(String city, String district, String street, String houseNumber, String description) {
-        this.city = city;
+
+
+    public UpdateAddressRequest(int customerId, List<Address> addresses, String district, String city, String street, String houseNumber, String description) {
+        this.customerId = customerId;
+        this.addresses = addresses;
         this.district = district;
+        this.city = city;
         this.street = street;
         this.houseNumber = houseNumber;
         this.description = description;
+    }
+
+    public UpdateAddressRequest() {
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public String getCity() {

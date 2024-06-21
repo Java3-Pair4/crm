@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
+import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -73,8 +75,17 @@ public class CustomerController {
     }
 
 
+    @PostMapping("/addAddress")
+    public void addAddress( AddAddressRequest request) {
+        customerService.addAddress(request);
+    }
 
 
+    @PutMapping("/customerUpdateAddress/{customerId}")
+    public void customerUpdateAddress(@PathVariable int customerId, @RequestBody UpdateAddressRequest request){
+        customerService.updateAddress(customerId, request);
+
+    }
 
 
 }

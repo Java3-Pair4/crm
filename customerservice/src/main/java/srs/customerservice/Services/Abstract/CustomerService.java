@@ -4,6 +4,7 @@ package srs.customerservice.Services.Abstract;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -31,8 +32,9 @@ public interface CustomerService {
 
     List<Customer> searchCustomers(String query);
 
-    void addAddress(int customerId, AddAddressRequest request);
+    void addAddress( AddAddressRequest request);
 
+    void updateAddress(int customerId, UpdateAddressRequest request);
 
 
 }
