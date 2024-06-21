@@ -5,12 +5,14 @@ import srs.customerservice.Entities.Customer;
 import srs.customerservice.Repositories.CustomerRepository;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.Abstract.CustomerService;
+import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 import srs.customerservice.Services.DTOs.Response.getAddressResponse;
 import srs.customerservice.Services.DTOs.Response.getContactResponse;
 import srs.customerservice.Services.Mappers.CustomerMapper;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 
@@ -62,6 +64,21 @@ public class CustomerServiceImpl implements CustomerService {
 
 
         return customerRepository.save(customer);
+    }
+
+    @Override
+    public void demografikAdd(AddCustomerDemografikRequest request) {
+        Customer customer = new Customer();
+        customer.setFirstName(request.getFirstName());
+        customer.setMiddleName(request.getMiddleName());
+        customer.setLastName(request.getLastName());
+        customer.setBirthDate(LocalDate.parse(request.getBirthDate()));
+        customer.setGender(request.getGender());
+        customer.setMotherName(request.getMotherName());
+        customer.setFatherName(request.getFatherName());
+        customer.setNationalityId(request.getNationalityId());
+
+        customerRepository.save(customer);
     }
 
 }

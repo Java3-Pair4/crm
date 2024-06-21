@@ -3,6 +3,7 @@ package srs.customerservice.Entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Customer {
     @Column(name="customer_id")
     private String customerID;
     @Column(name="nationality_id")
-    private String nationalityID;
+    private String nationalityId;
     @Column(name="account_number")
     private String accountNumber;
     @Column(name="first_name")
@@ -50,7 +51,7 @@ public class Customer {
     public Customer(int id, String customerID, String nationalityID, String accountNumber, String firstName, String lastName, String middleName, String motherName, String fatherName, String gender, @NotNull(message = "Birth Date boş bırakılamaz.") @PastOrPresent(message = "Birth Date içinde bulunulan yıldan büyük bir değer girilememelidir. ") LocalDate birthDate) {
         this.id = id;
         this.customerID = customerID;
-        this.nationalityID = nationalityID;
+        this.nationalityId = nationalityID;
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,11 +79,11 @@ public class Customer {
     }
 
     public String getNationalityID() {
-        return nationalityID;
+        return nationalityId;
     }
 
     public void setNationalityID(String nationalityID) {
-        this.nationalityID = nationalityID;
+        this.nationalityId = nationalityID;
     }
 
     public String getAccountNumber() {
@@ -148,4 +149,10 @@ public class Customer {
     public void setBirthDate(@NotNull(message = "Birth Date boş bırakılamaz.") @PastOrPresent(message = "Birth Date içinde bulunulan yıldan büyük bir değer girilememelidir. ") LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+
+    public void setNationalityId(@NotNull(message = "Nationality ID boş bırakılamaz.") @Pattern(regexp = "^[1-9][0-9]{10}$", message = "Nationality ID 11 haneli pozitif tam sayı olmalıdır.") String nationalityId) {
+
+    }
+
+
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
+import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 import srs.customerservice.Services.DTOs.Response.getAddressResponse;
@@ -52,4 +53,16 @@ public class CustomerController {
 
     }
 */
+
+
+
+    @PostMapping("/addCustomerDemografikRequest")
+    public void addCustomerDemografik(@RequestBody @Valid AddCustomerDemografikRequest request)
+    {
+      customerService.demografikAdd(request);
+    }
+
+
+
+
 }
