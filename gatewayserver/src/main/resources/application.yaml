@@ -16,10 +16,6 @@ spring:
           uri: lb://customer-service
           predicates:
             - Path=/api/v1/customers/**
-
-
-
-
         - id: eureka
           uri: http://localhost:8888
           predicates:
