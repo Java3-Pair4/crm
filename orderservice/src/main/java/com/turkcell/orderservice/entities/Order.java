@@ -17,11 +17,8 @@ public class Order {
     private String items;
     private String serviceAddress;
     private double totalAmount;
-
     private Date orderDate;
     private String customerID;
-
-
     private int price;
 
 

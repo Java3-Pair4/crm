@@ -10,8 +10,8 @@ public interface OrderService {
 
 
                                                        //get isteği at
-    int getOrderId(@RequestParam int orderId);
-    String getItems(@RequestParam String items);
+    int getOrderId(int orderId);
+    String getItems(String items);
 
 
 
