@@ -13,11 +13,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int getOrderId(int orderId) {
-        return 0;
+        return orderRepository.findById(orderId);
     }
 
     @Override
     public String getItems(String items) {
-        return "";
+        return null;
     }
 }

@@ -21,7 +21,7 @@ public interface CustomerMapper {
     getAddressResponse getAddressFromCustomer(Optional<Customer> customer);
     getContactResponse getContactFromCustomer(Optional<Customer> customer);
 
-  //  Customer getAddressFromCustomer(Optional<Customer> customer);
+    //Customer getAddressFromCustomer(Optional<Customer> customer);
     //Customer customerFromSearchRequest(SearchCustomerRequest request);
     //SearchCustomerResponse customerSearchResponse(Customer customer);
 }

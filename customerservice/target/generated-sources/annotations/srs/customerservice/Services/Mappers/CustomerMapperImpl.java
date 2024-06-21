@@ -10,7 +10,7 @@ import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-20T18:05:11+0300",
+    date = "2024-06-21T15:18:53+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
@@ -63,14 +63,7 @@ public class CustomerMapperImpl implements CustomerMapper {
             return null;
         }
 
-        int id = 0;
-        String city = null;
-        String district = null;
-        String street = null;
-        String houseNumber = null;
-        String description = null;
-
-        getAddressResponse getAddressResponse = new getAddressResponse( id, city, district, street, houseNumber, description );
+        getAddressResponse getAddressResponse = new getAddressResponse();
 
         return getAddressResponse;
     }

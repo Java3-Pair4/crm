@@ -77,4 +77,7 @@ public class getAddressResponse {
         this.houseNumber = houseNumber;
         this.description = description;
     }
+
+    public getAddressResponse() {
+    }
 }

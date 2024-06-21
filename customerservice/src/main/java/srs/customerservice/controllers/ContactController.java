@@ -1,12 +1,12 @@
 package srs.customerservice.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Entities.Contact;
+import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.Abstract.ContactService;
-import srs.customerservice.Services.DTOs.Response.getContactResponse;
+import srs.customerservice.Services.DTOs.Request.Contact.UpdateContactRequest;
+import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 
 import java.util.Optional;
 
@@ -35,6 +35,13 @@ public class ContactController {
 
 
 */
+
+    @PutMapping("/updateContact/{id}")
+    public Optional<Contact> updateContact(@PathVariable int id, @Valid @RequestBody UpdateContactRequest request){
+
+        return  contactService.updateContact(id, request);
+    }
+
 
 
 

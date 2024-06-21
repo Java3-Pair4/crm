@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import srs.customerservice.Entities.Contact;
 import srs.customerservice.Repositories.ContactRepository;
 import srs.customerservice.Services.Abstract.ContactService;
-import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Contact.UpdateContactRequest;
 
 import java.util.Optional;
 
@@ -23,8 +23,17 @@ public class ContactServiceImpl implements ContactService {
         return contactRepository.findById(customerId);
     }
 
-    @Override
-    public void updateContact(int customerId, UpdateAddressRequest request) {
 
+    @Override
+    public Optional<Contact> updateContact(int customerId, UpdateContactRequest request) {
+
+       Contact contact = contactRepository.findById(customerId);
+
+       contact.setEmail(request.getEmail());
+       contact.setGsmNumber(request.getMobilePhone());
+       contact.setHomeNumber(request.getHomePhone());
+       contact.setFax(request.getFax());
+
+        return Optional.of(contactRepository.save(contact));
     }
 }
