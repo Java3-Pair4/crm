@@ -1,15 +1,16 @@
 package srs.customerservice.Services.Mappers;
 
-import java.time.ZoneOffset;
-import java.util.Date;
+import java.util.Optional;
 import javax.annotation.processing.Generated;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
+import srs.customerservice.Services.DTOs.Response.getAddressResponse;
+import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-11T19:19:09+0300",
+    date = "2024-06-20T18:05:11+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
@@ -31,9 +32,7 @@ public class CustomerMapperImpl implements CustomerMapper {
         customer.setMotherName( request.getMotherName() );
         customer.setFatherName( request.getFatherName() );
         customer.setGender( request.getGender() );
-        if ( request.getBirthDate() != null ) {
-            customer.setBirthDate( Date.from( request.getBirthDate().atStartOfDay( ZoneOffset.UTC ).toInstant() ) );
-        }
+        customer.setBirthDate( request.getBirthDate() );
 
         return customer;
     }
@@ -46,9 +45,7 @@ public class CustomerMapperImpl implements CustomerMapper {
 
         AddCustomerResponse addCustomerResponse = new AddCustomerResponse();
 
-        if ( customer.getId() != null ) {
-            addCustomerResponse.setId( customer.getId().intValue() );
-        }
+        addCustomerResponse.setId( customer.getId() );
         addCustomerResponse.setAccountNumber( customer.getAccountNumber() );
         addCustomerResponse.setFirstName( customer.getFirstName() );
         addCustomerResponse.setMiddleName( customer.getMiddleName() );
@@ -58,5 +55,40 @@ public class CustomerMapperImpl implements CustomerMapper {
         addCustomerResponse.setGender( customer.getGender() );
 
         return addCustomerResponse;
+    }
+
+    @Override
+    public getAddressResponse getAddressFromCustomer(Optional<Customer> customer) {
+        if ( customer == null ) {
+            return null;
+        }
+
+        int id = 0;
+        String city = null;
+        String district = null;
+        String street = null;
+        String houseNumber = null;
+        String description = null;
+
+        getAddressResponse getAddressResponse = new getAddressResponse( id, city, district, street, houseNumber, description );
+
+        return getAddressResponse;
+    }
+
+    @Override
+    public getContactResponse getContactFromCustomer(Optional<Customer> customer) {
+        if ( customer == null ) {
+            return null;
+        }
+
+        int id = 0;
+        String email = null;
+        String gsmNumber = null;
+        String homeNumber = null;
+        String fax = null;
+
+        getContactResponse getContactResponse = new getContactResponse( id, email, gsmNumber, homeNumber, fax );
+
+        return getContactResponse;
     }
 }

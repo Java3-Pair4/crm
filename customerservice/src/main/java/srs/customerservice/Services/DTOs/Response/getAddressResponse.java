@@ -1,0 +1,80 @@
+package srs.customerservice.Services.DTOs.Response;
+
+public class getAddressResponse {
+    private int  id;
+
+    private String city;
+
+    private String district;
+
+    private String street;
+
+    private String houseNumber;
+
+    private String description;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public getAddressResponse(int id, String city, String district, String street, String houseNumber, String description) {
+        this.id = id;
+        this.city = city;
+        this.district = district;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.description = description;
+    }
+
+    public getAddressResponse(String city, String district, String street, String houseNumber, String description) {
+        this.city = city;
+        this.district = district;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.description = description;
+    }
+}
