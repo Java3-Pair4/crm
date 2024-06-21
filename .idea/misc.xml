@@ -14,6 +14,7 @@
         <option value="$USER_HOME$/Downloads/crm-main-proje/crm-main/orderservice/pom.xml" />
         <option value="$PROJECT_DIR$/accountservice/pom.xml" />
         <option value="$PROJECT_DIR$/BillingAccountService/pom.xml" />
+        <option value="$PROJECT_DIR$/gatewayserver/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

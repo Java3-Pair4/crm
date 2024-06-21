@@ -9,6 +9,8 @@ import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 import srs.customerservice.Services.DTOs.Response.getAddressResponse;
 import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
+import java.util.List;
+
 
 public interface CustomerService {
     //List<SearchCustomerResponse> search(SearchCustomerRequest request);
@@ -26,5 +28,5 @@ public interface CustomerService {
 // Demografik bilgi ekleme
     void demografikAdd(AddCustomerDemografikRequest request);
 
-
+    List<Customer> searchCustomers(String query);
 }

@@ -13,6 +13,8 @@ import srs.customerservice.Services.DTOs.Response.getContactResponse;
 import srs.customerservice.Services.Mappers.CustomerMapper;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -80,5 +82,32 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerRepository.save(customer);
     }
+
+
+
+
+    public List<Customer> searchCustomers(String query) {
+        List<Customer> customers = new ArrayList<>();
+        customers.addAll(customerRepository.findByFirstNameContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByLastNameContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByMiddleNameContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByMotherNameContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByFatherNameContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByNationalityIdContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByCustomerIDContainingIgnoreCase(query));
+        customers.addAll(customerRepository.findByAccountNumberContainingIgnoreCase(query));
+        return customers;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }

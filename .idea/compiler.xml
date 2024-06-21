@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="BillingAccountService" />
+        <module name="gatewayserver" />
         <module name="discoveryserver" />
         <module name="basketservice" />
         <module name="orderservice" />
@@ -40,6 +41,7 @@
       <module name="basketservice" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="discoveryserver" options="-parameters" />
+      <module name="gatewayserver" options="-parameters" />
       <module name="orderservice" options="-parameters" />
       <module name="orderservice (1) (com.order)" options="" />
       <module name="orderservice (2) (com.turkcell)" options="" />

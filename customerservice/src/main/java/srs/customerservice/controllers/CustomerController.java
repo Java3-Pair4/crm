@@ -13,8 +13,10 @@ import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
 import srs.customerservice.Services.DTOs.Response.getAddressResponse;
 import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -61,6 +63,16 @@ public class CustomerController {
     {
       customerService.demografikAdd(request);
     }
+
+
+
+
+    @GetMapping("/search")
+    public List<Customer> searchCustomers(@RequestParam String query) {
+        return customerService.searchCustomers(query);
+    }
+
+
 
 
 

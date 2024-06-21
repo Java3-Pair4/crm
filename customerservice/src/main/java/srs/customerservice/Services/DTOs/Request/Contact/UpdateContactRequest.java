@@ -1,9 +1,6 @@
 package srs.customerservice.Services.DTOs.Request.Contact;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class UpdateContactRequest {
 
@@ -15,14 +12,17 @@ public class UpdateContactRequest {
     @NotBlank(message = "Mobile phone boş bırakılamaz.")
     @Size(min = 11, max = 11, message = "Mobile phone 11 haneli olmalıdır.")
     @Pattern(regexp = "\\d+", message = "Mobile phone pozitif tam sayı olmalıdır.")
+    @Positive
     private String mobilePhone;
 
     @Size(min = 11, max = 11, message = "Home phone 11 haneli olmalıdır.")
     @Pattern(regexp = "\\d*", message = "Home phone pozitif tam sayı olmalıdır.")
+    @Positive
     private String homePhone;
 
     @Size(min = 12, max = 12, message = "Fax 12 haneli olmalıdır.")
     @Pattern(regexp = "\\d{2}-\\d{3}-\\d{7}", message = "Fax numarası 44-112-7859642 formatında olmalıdır.")
+    @Positive
     private String fax;
 
     public UpdateContactRequest(String email, String mobilePhone, String homePhone, String fax) {
