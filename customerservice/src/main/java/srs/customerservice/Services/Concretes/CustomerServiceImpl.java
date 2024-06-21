@@ -3,8 +3,10 @@ package srs.customerservice.Services.Concretes;
 import org.springframework.stereotype.Service;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Repositories.CustomerRepository;
+import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.Abstract.CustomerService;
+import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -21,9 +23,11 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
+    private final AddressService addressService;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService) {
         this.customerRepository = customerRepository;
+        this.addressService = addressService;
     }
 
     @Override
@@ -99,15 +103,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customers;
     }
 
+    @Override
+    public void addAddress(int customerId, AddAddressRequest request) {
 
+        addressService.addAddress(request);
 
-
-
-
-
-
-
-
+    }
 
 
 }
