@@ -34,20 +34,60 @@ public class AddressController {
     }
 
 
-    @PutMapping("/{id}")
-    public void updateAddress(@PathVariable int id, @Valid @RequestBody DeleteAddressRequest request) {
-        addressService.updateAddress(id,request);
+@PutMapping("/{id}")
+public ResponseEntity<String> updateAddress(@PathVariable int id, @Valid @RequestBody DeleteAddressRequest request) {
+    try {
+        boolean updated = addressService.updateAddress(id, request);
+        if (updated) {
+            return ResponseEntity.ok("Adres başarıyla güncellendi.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Adres bulunamadı.");
+        }
+    } catch (IllegalArgumentException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Adres güncellenirken bir hata oluştu.");
     }
+}
+/*
 
     @GetMapping("{id}")
     public List<Address> getAddress(@RequestParam Long customerId){
        return  addressService.getAddressesByCustomerId(customerId);
 
     }
+*/
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Address>> getAddress(@RequestParam Long customerId) {
+        List<Address> addresses = addressService.getAddressesByCustomerId(customerId);
+        if (!addresses.isEmpty()) {
+            return ResponseEntity.ok(addresses);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+/*
     @DeleteMapping("/addresses/{addressId}")
     public void deleteAddress(@PathVariable Long addressId) {
         addressService.deleteAddressById(addressId);
     }
 
+
+ */
+
+
+
+    @DeleteMapping("/addresses/{addressId}")
+    public ResponseEntity<String> deleteAddress(@PathVariable Long addressId) {
+        try {
+            addressService.deleteAddressById(addressId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Adres başarıyla silindi.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Silinecek adres bulunamadı.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Adres silinirken bir hata oluştu.");
+        }
+    }
 
 }

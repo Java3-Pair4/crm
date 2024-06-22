@@ -12,7 +12,7 @@ public interface AddressService {
 
 
     //adres güncelleme fr7 5.madde
-    void updateAddress(int id, DeleteAddressRequest request);
+    boolean updateAddress(int id, DeleteAddressRequest request);
     void addAddress(AddAddressRequest request);
  //  getAddressResponse getAddress(int id);
     List<Address> getAddressesByCustomerId(Long customerId);

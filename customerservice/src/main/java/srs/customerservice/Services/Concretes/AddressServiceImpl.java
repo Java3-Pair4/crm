@@ -66,7 +66,7 @@ public class AddressServiceImpl implements AddressService {
         addressRepository.deleteById( addressId);
     }
 
-
+/*
     @Override
     public void updateAddress(int id, DeleteAddressRequest request) {
         Address adres = addressRepository.findById(id);
@@ -77,6 +77,23 @@ public class AddressServiceImpl implements AddressService {
 
         addressRepository.save(adres);
 
+    }
+    */
+
+    public boolean updateAddress(int id, DeleteAddressRequest request) {
+       Address optionalAddress = addressRepository.findById(id);
+        if (optionalAddress != null) {
+            Address address = new Address();
+            address.setCity(request.getCity());
+            address.setDistrict(request.getDistrict());
+            address.setStreet(request.getStreet());
+            address.setHouseNumber(request.getHouseNumber());
+            address.setDescription(request.getDescription());
+            addressRepository.save(address);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
