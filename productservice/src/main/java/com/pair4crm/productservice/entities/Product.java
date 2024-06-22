@@ -2,12 +2,9 @@ package com.pair4crm.productservice.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name= "products")
@@ -24,8 +21,14 @@ public class Product {
     @Column(name="prodChar")
     private String prodChar;
 
-    @Column(name="adresses")
-    private String adress;
+   // @Column(name="adresses")
+   // private String adress;
+
+    @ElementCollection
+    @CollectionTable(name = "product_addresses", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "address")
+    private List<String> addresses = new ArrayList<>();
+
 
     @Column(name="start_Dates")
     private Date startDate;
@@ -38,13 +41,21 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Categori categori;
 
-    public Product(int id, String name, String prodChar, String adress, Date startDate, Categori categori) {
+    public Product(int id, String name, String prodChar, List<String> addresses, Date startDate, Categori categori) {
         this.id = id;
         this.name = name;
         this.prodChar = prodChar;
-        this.adress = adress;
+        this.addresses = addresses;
         this.startDate = startDate;
         this.categori = categori;
+    }
+
+    public List<String> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<String> addresses) {
+        this.addresses = addresses;
     }
 
     public Product() {
@@ -74,13 +85,7 @@ public class Product {
         this.prodChar = prodChar;
     }
 
-    public String getAdress() {
-        return adress;
-    }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -97,4 +102,10 @@ public class Product {
     public void setCategori(Categori categori) {
         this.categori = categori;
     }
+
+    public void addAddress(String address) {
+        this.addresses.add(address);
+    }
+
+
 }

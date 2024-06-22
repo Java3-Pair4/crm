@@ -17,12 +17,9 @@ public class ProductServiceImp implements ProductServices {
 
     @Override
     public List<Product> getAllProducts() {
-        List<Product> products=productRepository.findAll();
-        /*
-        return products.stream()
-                .map(ProductMapper.INSTANCE::productToListProductResponse)
-                          .collect(Collectors.toList());
-         */
+
+       // List<Product> products = productRepository.findAll();
+
         return productRepository.findAll();
 
     }
