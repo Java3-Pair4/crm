@@ -57,10 +57,28 @@ public class CustomerController {
 
         return  customerService.getContact(id);
    }
-
+/*
     @PutMapping("/updateCustomer/{id}")
     public Customer updateCustomer(@PathVariable int id, @Valid @RequestBody UpdateCustomerRequest request) {
         return customerService.updateCustomer(id, request);
+    }
+
+    */
+
+    @PutMapping("/updateCustomer/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable int id, @Valid @RequestBody UpdateCustomerRequest request) {
+        try {
+            Customer updatedCustomer = customerService.updateCustomer(id, request);
+            if (updatedCustomer != null) {
+                return ResponseEntity.ok(updatedCustomer);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 

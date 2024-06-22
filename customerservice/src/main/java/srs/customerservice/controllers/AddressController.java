@@ -49,6 +49,7 @@ public ResponseEntity<String> updateAddress(@PathVariable int id, @Valid @Reques
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Adres güncellenirken bir hata oluştu.");
     }
 }
+
 /*
 
     @GetMapping("{id}")
@@ -75,7 +76,6 @@ public ResponseEntity<String> updateAddress(@PathVariable int id, @Valid @Reques
 
 
  */
-
 
 
     @DeleteMapping("/addresses/{addressId}")
