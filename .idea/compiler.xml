@@ -33,6 +33,7 @@
       <module name="orderservice (1) (com.order)" target="1.5" />
       <module name="orderservice (2) (com.turkcell)" target="1.5" />
       <module name="productservice (2)" target="17" />
+      <module name="searchservice" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
