@@ -1,14 +1,13 @@
 package srs.customerservice.controllers;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Entities.Address;
-import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
-import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
-import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
-import srs.customerservice.Services.DTOs.Response.getAddressResponse;
+import srs.customerservice.Services.DTOs.Request.Address.DeleteAddressRequest;
 
 import java.util.List;
 
@@ -22,15 +21,21 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @PostMapping
-    public void addAddress(@RequestBody AddAddressRequest request){
-
-        addressService.addAddress(request);
+    @PostMapping("/addAdres")
+    public ResponseEntity<String> addAddress(@Valid @RequestBody AddAddressRequest request) {
+        try {
+            addressService.addAddress(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Adres başarıyla eklendi.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Adres eklenirken bir hata oluştu.");
+        }
     }
 
 
     @PutMapping("/{id}")
-    public void updateAddress(@PathVariable int id, @Valid @RequestBody UpdateAddressRequest request) {
+    public void updateAddress(@PathVariable int id, @Valid @RequestBody DeleteAddressRequest request) {
         addressService.updateAddress(id,request);
     }
 
@@ -43,5 +48,6 @@ public class AddressController {
     public void deleteAddress(@PathVariable Long addressId) {
         addressService.deleteAddressById(addressId);
     }
+
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 public class AddAddressRequest {
 
 
+
     @NotEmpty(message = "City boş olamaz")
     private String city;
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import srs.customerservice.Entities.Contact;
 import srs.customerservice.Repositories.ContactRepository;
 import srs.customerservice.Services.Abstract.ContactService;
+import srs.customerservice.Services.DTOs.Request.Contact.AddContactRequest;
 import srs.customerservice.Services.DTOs.Request.Contact.UpdateContactRequest;
 
 import java.util.Optional;
@@ -35,5 +36,18 @@ public class ContactServiceImpl implements ContactService {
        contact.setFax(request.getFax());
 
         return Optional.of(contactRepository.save(contact));
+    }
+
+    @Override
+    public void addContact(AddContactRequest request) {
+
+        Contact contact = new Contact();
+        contact.setEmail(request.getEmail());
+        contact.setGsmNumber(request.getMobilePhone());
+        contact.setHomeNumber(request.getHomePhone());
+        contact.setFax(request.getFax());
+
+        contactRepository.save(contact);
+
     }
 }

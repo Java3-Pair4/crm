@@ -2,16 +2,10 @@ package srs.customerservice.Services.Concretes;
 
 import org.springframework.stereotype.Service;
 import srs.customerservice.Entities.Address;
-import srs.customerservice.Entities.Customer;
 import srs.customerservice.Repositories.AddressRepository;
-import srs.customerservice.Repositories.CustomerRepository;
 import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
-import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
-import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
-import srs.customerservice.Services.DTOs.Response.getAddressResponse;
-import srs.customerservice.Services.Mappers.AddressMapper;
-import srs.customerservice.Services.Mappers.CustomerMapper;
+import srs.customerservice.Services.DTOs.Request.Address.DeleteAddressRequest;
 
 import java.util.List;
 
@@ -74,7 +68,7 @@ public class AddressServiceImpl implements AddressService {
 
 
     @Override
-    public void updateAddress(int id, UpdateAddressRequest request) {
+    public void updateAddress(int id, DeleteAddressRequest request) {
         Address adres = addressRepository.findById(id);
         adres.setCity(request.getCity());
         adres.setDistrict(request.getDistrict());

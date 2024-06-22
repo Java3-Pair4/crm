@@ -2,13 +2,15 @@ package srs.customerservice.controllers;
 
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
-import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Address.DeleteAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Contact.AddContactRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -27,10 +29,22 @@ public class CustomerController {
     }
 
     @PostMapping("/addCustomer")
-    public AddCustomerResponse add(@RequestBody @Valid AddCustomerRequest request)
+    public  ResponseEntity<String> add(@RequestBody @Valid AddCustomerRequest request)
     {
-        return customerService.add(request);
+       // return customerService.add(request);
+
+        try {
+            customerService.add(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Müşteri bilgileri başarıyla eklendi.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Müşteri  bilgileri eklenirken bir hata oluştu.");
+        }
     }
+
+
+
     //fr4 3.madde
     @GetMapping("/address{id}")
     public getAddressResponse getAddres(@PathVariable int id) {
@@ -48,25 +62,21 @@ public class CustomerController {
     public Customer updateCustomer(@PathVariable int id, @Valid @RequestBody UpdateCustomerRequest request) {
         return customerService.updateCustomer(id, request);
     }
-/*
-    @PostMapping("/updateCustomer")
-    public ResponseEntity<?> updateCustomer(@Valid @RequestBody UpdateCustomerRequest request,@RequestBody int id) {
-
-            customerService.updateCustomer(id, request);
-            return ResponseEntity.ok("Customer bilgilerinin güncellemesi başarılı.");
-
-    }
-*/
 
 
 
     @PostMapping("/addCustomerDemografikRequest")
-    public void addCustomerDemografik(@RequestBody @Valid AddCustomerDemografikRequest request)
-    {
-      customerService.demografikAdd(request);
+    public ResponseEntity<String> addContact(@Valid @RequestBody AddCustomerDemografikRequest request){
+        try {
+            customerService.demografikAdd(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Müşteri demografik bilgileri başarıyla eklendi.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Müşteri demografik  bilgileri eklenirken bir hata oluştu.");
+        }
+
     }
-
-
 
 
     @GetMapping("/search")
@@ -76,13 +86,21 @@ public class CustomerController {
 
 
     @PostMapping("/addAddress")
-    public void addAddress( AddAddressRequest request) {
-        customerService.addAddress(request);
+    public ResponseEntity<String> addAddress( @Valid @RequestBody AddAddressRequest request) {
+        try {
+            customerService.addAddress(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Müşteri demografik bilgileri başarıyla eklendi.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Müşteri demografik  bilgileri eklenirken bir hata oluştu.");
+        }
+
     }
 
 
     @PutMapping("/customerUpdateAddress/{customerId}")
-    public void customerUpdateAddress(@PathVariable int customerId, @RequestBody UpdateAddressRequest request){
+    public void customerUpdateAddress(@PathVariable int customerId, @RequestBody DeleteAddressRequest request){
         customerService.updateAddress(customerId, request);
 
     }

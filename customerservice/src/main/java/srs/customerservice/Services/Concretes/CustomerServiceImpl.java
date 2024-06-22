@@ -9,7 +9,7 @@ import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.Abstract.CustomerService;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
-import srs.customerservice.Services.DTOs.Request.Address.UpdateAddressRequest;
+import srs.customerservice.Services.DTOs.Request.Address.DeleteAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.AddCustomerDemografikRequest;
 import srs.customerservice.Services.DTOs.Request.Customer.UpdateCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -116,10 +116,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateAddress(int customerId, UpdateAddressRequest request) {
+    public void updateAddress(int customerId, DeleteAddressRequest request) {
 
         Address adres = addressRepository.findById(customerId);
 
+        adres.setId(request.getCustomerId());
         adres.setCity(request.getCity());
         adres.setDistrict(request.getDistrict());
         adres.setStreet(request.getStreet());
