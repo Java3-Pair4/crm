@@ -58,6 +58,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> getAddressesByCustomerId(Long customerId) {
+
+
         return addressRepository.findByCustomerId(customerId);
     }
 

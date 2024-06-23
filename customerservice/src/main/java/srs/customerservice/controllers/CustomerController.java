@@ -46,7 +46,7 @@ public class CustomerController {
 
 
     //fr4 3.madde
-    @GetMapping("/address{id}")
+    @GetMapping("/address/{id}")
     public getAddressResponse getAddres(@PathVariable int id) {
         return customerService.getAddress(id);
 

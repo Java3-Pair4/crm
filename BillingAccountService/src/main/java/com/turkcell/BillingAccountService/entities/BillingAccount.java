@@ -1,8 +1,7 @@
 package com.turkcell.BillingAccountService.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,10 @@ import lombok.Setter;
 @Entity
 @Table(name = "Billing_Account")
 public class BillingAccount {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String accountNumber;
     private String accountName;
     private String customerId;

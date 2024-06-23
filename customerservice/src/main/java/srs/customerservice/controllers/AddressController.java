@@ -52,15 +52,17 @@ public ResponseEntity<String> updateAddress(@PathVariable int id, @Valid @Reques
 
 /*
 
-    @GetMapping("{id}")
-    public List<Address> getAddress(@RequestParam Long customerId){
+    @GetMapping("/{customerId}")
+    public List<Address> getAddress(@PathVariable Long customerId){
        return  addressService.getAddressesByCustomerId(customerId);
 
     }
-*/
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Address>> getAddress(@RequestParam Long customerId) {
+ */
+
+
+    @GetMapping("/{customerId}")
+    public ResponseEntity<List<Address>> getAddress(@PathVariable Long customerId) {
         List<Address> addresses = addressService.getAddressesByCustomerId(customerId);
         if (!addresses.isEmpty()) {
             return ResponseEntity.ok(addresses);
@@ -68,6 +70,9 @@ public ResponseEntity<String> updateAddress(@PathVariable int id, @Valid @Reques
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+
+
 /*
     @DeleteMapping("/addresses/{addressId}")
     public void deleteAddress(@PathVariable Long addressId) {
