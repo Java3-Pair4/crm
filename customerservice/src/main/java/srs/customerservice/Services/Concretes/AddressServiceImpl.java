@@ -6,8 +6,11 @@ import srs.customerservice.Repositories.AddressRepository;
 import srs.customerservice.Services.Abstract.AddressService;
 import srs.customerservice.Services.DTOs.Request.Address.AddAddressRequest;
 import srs.customerservice.Services.DTOs.Request.Address.DeleteAddressRequest;
+import srs.customerservice.Services.DTOs.Response.getAddressResponse;
+import srs.customerservice.Services.Mappers.AddressMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -97,6 +100,9 @@ public class AddressServiceImpl implements AddressService {
             return false;
         }
     }
+
+
+
 
 
 

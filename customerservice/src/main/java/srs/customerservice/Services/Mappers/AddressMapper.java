@@ -1,5 +1,6 @@
 package srs.customerservice.Services.Mappers;
 
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import srs.customerservice.Entities.Address;
 import srs.customerservice.Entities.Customer;
@@ -14,4 +15,9 @@ public interface AddressMapper {
     Address addressFromAddRequest(AddAddressRequest request);
 
     getAddressResponse getAddressFromAddress(Address adres);
+
+
+
+
+
 }
