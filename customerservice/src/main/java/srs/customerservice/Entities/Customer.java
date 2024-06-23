@@ -14,16 +14,10 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "customer_id")
-    private Integer customerID;
-    /*
+    private int  id;
     @Column(name="customer_id")
-    private String customerID;
+    private int customerID;
 
-     */
     @Column(name="nationality_id")
     private String nationalityId;
     @Column(name="account_number")
@@ -56,7 +50,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer id, Integer customerID, String nationalityId, String accountNumber, String firstName, String lastName, String middleName, String motherName, String fatherName, String gender, LocalDate birthDate, List<Address> addresses, List<Contact> contacts) {
+    public Customer(int id, int customerID, String nationalityId, String accountNumber, String firstName, String lastName, String middleName, String motherName, String fatherName, String gender, LocalDate birthDate, List<Address> addresses, List<Contact> contacts) {
         this.id = id;
         this.customerID = customerID;
         this.nationalityId = nationalityId;
@@ -72,19 +66,19 @@ public class Customer {
         this.contacts = contacts;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getCustomerID() {
+    public int  getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(Integer customerID) {
+    public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 

@@ -29,9 +29,11 @@ public interface CustomerRepository extends JpaRepository<Customer , Integer> {
     List<Customer> findByMiddleNameContainingIgnoreCase(String middleName);
     List<Customer> findByMotherNameContainingIgnoreCase(String motherName);
     List<Customer> findByFatherNameContainingIgnoreCase(String fatherName);
-    List<Customer> findByNationalityIdContainingIgnoreCase(String nationalityId);
-    List<Customer> findByCustomerIDContainingIgnoreCase(String customerID);
+  //  List<Customer> findByNationalityIdContainingIgnoreCase(String nationalityId);
+   // List<Customer> findByCustomerIDContainingIgnoreCase(String customerID);
     List<Customer> findByAccountNumberContainingIgnoreCase(String accountNumber);
+
+
 
 
 

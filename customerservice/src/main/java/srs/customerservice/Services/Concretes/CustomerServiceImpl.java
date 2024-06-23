@@ -102,8 +102,8 @@ public class CustomerServiceImpl implements CustomerService {
         customers.addAll(customerRepository.findByMiddleNameContainingIgnoreCase(query));
         customers.addAll(customerRepository.findByMotherNameContainingIgnoreCase(query));
         customers.addAll(customerRepository.findByFatherNameContainingIgnoreCase(query));
-        customers.addAll(customerRepository.findByNationalityIdContainingIgnoreCase(query));
-        customers.addAll(customerRepository.findByCustomerIDContainingIgnoreCase(query));
+        // customers.addAll(customerRepository.findByNationalityIdContainingIgnoreCase(query));
+        // customers.addAll(customerRepository.findByCustomerIDContainingIgnoreCase(query));
         customers.addAll(customerRepository.findByAccountNumberContainingIgnoreCase(query));
         return customers;
     }

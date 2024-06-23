@@ -17,9 +17,8 @@ public class BillingAccount {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // Use GenerationType.AUTO for UUID
-    @Column(name="id", columnDefinition = "BINARY(16)") // Define column type for UUID
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int  id;
 
     @Column(name="status")
     private boolean status;
@@ -33,15 +32,17 @@ public class BillingAccount {
     @Column(name="type")
     private String type;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "customer_id")
-    private Customer  customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    public BillingAccount(UUID id, boolean status, String accountNumber, String name, String type, Customer customer, Address address) {
+    public BillingAccount(int id, boolean status, String accountNumber, String name, String type, Customer customer, Address address) {
         this.id = id;
         this.status = status;
         this.accountNumber = accountNumber;
@@ -51,11 +52,14 @@ public class BillingAccount {
         this.address = address;
     }
 
-    public UUID getId() {
+    public BillingAccount() {
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
