@@ -12,12 +12,18 @@ import java.util.List;
 @Table(name = "customers")
 public class Customer {
 
-    @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "customer_id")
+    private Integer customerID;
+    /*
     @Column(name="customer_id")
     private String customerID;
+
+     */
     @Column(name="nationality_id")
     private String nationalityId;
     @Column(name="account_number")
@@ -50,10 +56,10 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String customerID, String nationalityID, String accountNumber, String firstName, String lastName, String middleName, String motherName, String fatherName, String gender, @NotNull(message = "Birth Date boş bırakılamaz.") @PastOrPresent(message = "Birth Date içinde bulunulan yıldan büyük bir değer girilememelidir. ") LocalDate birthDate) {
+    public Customer(Integer id, Integer customerID, String nationalityId, String accountNumber, String firstName, String lastName, String middleName, String motherName, String fatherName, String gender, LocalDate birthDate, List<Address> addresses, List<Contact> contacts) {
         this.id = id;
         this.customerID = customerID;
-        this.nationalityId = nationalityID;
+        this.nationalityId = nationalityId;
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,22 +68,44 @@ public class Customer {
         this.fatherName = fatherName;
         this.gender = gender;
         this.birthDate = birthDate;
+        this.addresses = addresses;
+        this.contacts = contacts;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getCustomerID() {
+    public Integer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
+    }
+
+    public String getNationalityId() {
+        return nationalityId;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     public String getNationalityID() {
