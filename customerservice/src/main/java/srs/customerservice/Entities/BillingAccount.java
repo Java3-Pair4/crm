@@ -2,7 +2,8 @@ package srs.customerservice.Entities;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="BillingAccount")
@@ -55,6 +56,7 @@ public class BillingAccount {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     private Address address;
+    private Date deletedDate;
 
     public BillingAccount(int id, boolean status, String accountNumber, String name, String type, Customer customer, Address address) {
         this.id = id;
@@ -124,4 +126,14 @@ public class BillingAccount {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public void setUpdatedDate(LocalDateTime now) {
+    }
+
+    public void setDeletedDate(LocalDateTime now) {
+    }
+    public Date getDeletedDate() {
+        return this.deletedDate;
+    }
+
 }

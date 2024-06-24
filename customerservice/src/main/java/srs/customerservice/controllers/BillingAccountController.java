@@ -6,9 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Services.Abstract.BillingAccountService;
 import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.createBillingAccountRequest;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.createdBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getAllBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getBillingAccountResponse;
+import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.updateBillingAccountRequest;
+import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.*;
 import srs.customerservice.core.entities.business.paging.PageInfo;
 import srs.customerservice.core.entities.business.paging.PageInfoResponse;
 
@@ -50,6 +49,19 @@ public class BillingAccountController {
         return billingAccountService.add(createBillingAccountRequest);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Update")
+    public updateBillingAccountResponse update(@Valid @RequestBody updateBillingAccountRequest updateBillingAccountRequest, @PathVariable int id){
+        return billingAccountService.update(id,updateBillingAccountRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete")
+    public deleteBillingAccountResponse delete(@PathVariable int id) {
+        return billingAccountService.delete(id);
+    }
 
 
 }

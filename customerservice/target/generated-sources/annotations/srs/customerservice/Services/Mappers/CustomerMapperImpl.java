@@ -1,7 +1,10 @@
 package srs.customerservice.Services.Mappers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.processing.Generated;
+import srs.customerservice.Entities.Address;
 import srs.customerservice.Entities.Customer;
 import srs.customerservice.Services.DTOs.Request.AddCustomerRequest;
 import srs.customerservice.Services.DTOs.Response.AddCustomerResponse;
@@ -10,7 +13,7 @@ import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-21T16:02:22+0300",
+    date = "2024-06-24T20:53:13+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
@@ -23,7 +26,13 @@ public class CustomerMapperImpl implements CustomerMapper {
 
         Customer customer = new Customer();
 
-        customer.setCustomerID( request.getCustomerID() );
+        if ( request.getCustomerID() != null ) {
+            customer.setCustomerID( Integer.parseInt( request.getCustomerID() ) );
+        }
+        List<Address> list = request.getAddresses();
+        if ( list != null ) {
+            customer.setAddresses( new ArrayList<Address>( list ) );
+        }
         customer.setNationalityID( request.getNationalityID() );
         customer.setAccountNumber( request.getAccountNumber() );
         customer.setFirstName( request.getFirstName() );
@@ -46,6 +55,7 @@ public class CustomerMapperImpl implements CustomerMapper {
         AddCustomerResponse addCustomerResponse = new AddCustomerResponse();
 
         addCustomerResponse.setId( customer.getId() );
+        addCustomerResponse.setNationalityId( customer.getNationalityId() );
         addCustomerResponse.setAccountNumber( customer.getAccountNumber() );
         addCustomerResponse.setFirstName( customer.getFirstName() );
         addCustomerResponse.setMiddleName( customer.getMiddleName() );

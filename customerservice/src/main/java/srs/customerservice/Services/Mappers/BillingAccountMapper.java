@@ -4,9 +4,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import srs.customerservice.Entities.BillingAccount;
 import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.createBillingAccountRequest;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.createdBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getAllBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getBillingAccountResponse;
+import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.updateBillingAccountRequest;
+import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.*;
 
 public interface BillingAccountMapper {
 
@@ -29,4 +28,13 @@ public interface BillingAccountMapper {
     @Mapping(source = "customerId", target = "customer.id")
     @Mapping(source = "addressId", target = "address.id")
     BillingAccount billingAccountFromCreateBillingAccountRequest(createBillingAccountRequest createBillingAccountRequest);
+
+    @Mapping(source = "customer.id", target = "customerId")
+    @Mapping(source = "address.id", target = "addressId")
+    updateBillingAccountResponse updatedBillingAccountResponseFromBillingAccount(BillingAccount billingAccount);
+
+
+    BillingAccount billingAccountFromUpdateBillingAccountRequest(updateBillingAccountRequest updateBillingAccountRequest);
+
+    deleteBillingAccountResponse deletedBillingAccountResponseFromBillingAccount(BillingAccount deletedBillingAccount);
 }

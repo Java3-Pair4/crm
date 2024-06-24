@@ -8,12 +8,13 @@ import srs.customerservice.Entities.BillingAccount;
 import srs.customerservice.Repositories.BillingAccountRepository;
 import srs.customerservice.Services.Abstract.BillingAccountService;
 import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.createBillingAccountRequest;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.createdBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getAllBillingAccountResponse;
-import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getBillingAccountResponse;
+import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.updateBillingAccountRequest;
+import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.*;
 import srs.customerservice.Services.Mappers.BillingAccountMapper;
 import srs.customerservice.core.entities.business.paging.PageInfo;
 import srs.customerservice.core.entities.business.paging.PageInfoResponse;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,6 +65,37 @@ public class BillingAccountServiceImpl implements BillingAccountService {
 
         return createdBillingAccountResponse;
 
+    }
+
+    @Override
+    public updateBillingAccountResponse update(int id, updateBillingAccountRequest updateBillingAccountRequest) {
+        BillingAccount savedBillingAccount = billingAccountRepository.findById(id).get();
+
+        BillingAccount billingAccount = BillingAccountMapper.INSTANCE.billingAccountFromUpdateBillingAccountRequest(updateBillingAccountRequest);
+
+        billingAccount.setId(id);
+        billingAccount.setCustomer(savedBillingAccount.getCustomer());
+        billingAccount.setUpdatedDate(LocalDateTime.now());
+        BillingAccount updatedBillingAccount = billingAccountRepository.save(billingAccount);
+
+        updateBillingAccountResponse updatedBillingAccountResponse =
+                BillingAccountMapper.INSTANCE.updatedBillingAccountResponseFromBillingAccount(updatedBillingAccount);
+
+        return updatedBillingAccountResponse;
+    }
+
+    @Override
+    public deleteBillingAccountResponse delete(int id) {
+        BillingAccount billingAccount = billingAccountRepository.findById(id).get();
+        //rule
+        billingAccount.setId(id);
+        billingAccount.setDeletedDate(LocalDateTime.now());
+        BillingAccount deletedBillingAccount = billingAccountRepository.save(billingAccount);
+
+        deleteBillingAccountResponse deletedBillingAccountResponse =
+                BillingAccountMapper.INSTANCE.deletedBillingAccountResponseFromBillingAccount(deletedBillingAccount);
+        deletedBillingAccountResponse.setDeletedDate(deletedBillingAccount.getDeletedDate());
+        return deletedBillingAccountResponse;
     }
 
 
