@@ -1,9 +1,12 @@
 package srs.customerservice.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import srs.customerservice.Services.Abstract.BillingAccountService;
+import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.createBillingAccountRequest;
+import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.createdBillingAccountResponse;
 import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getAllBillingAccountResponse;
 import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getBillingAccountResponse;
 import srs.customerservice.core.entities.business.paging.PageInfo;
@@ -24,7 +27,7 @@ public class BillingAccountController {
         this.billingAccountService = billingAccountService;
     }
 
-   // müşterinin mevcut fatura hesapları liste şeklinde gösterilmelidir.
+   // müşterinin mevcut fatura hesapları liste şeklinde gösterilmelidir. FR14-3.madde
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "GetById")
@@ -40,6 +43,12 @@ public class BillingAccountController {
         return billingAccountService.getAllPage(pageInfo);
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Add")
+    public createdBillingAccountResponse add(@Valid @RequestBody createBillingAccountRequest createBillingAccountRequest) {
+        return billingAccountService.add(createBillingAccountRequest);
+    }
 
 
 

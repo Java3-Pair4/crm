@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import srs.customerservice.Entities.BillingAccount;
 import srs.customerservice.Repositories.BillingAccountRepository;
 import srs.customerservice.Services.Abstract.BillingAccountService;
+import srs.customerservice.Services.DTOs.Request.BillingAccountRequest.createBillingAccountRequest;
+import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.createdBillingAccountResponse;
 import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getAllBillingAccountResponse;
 import srs.customerservice.Services.DTOs.Response.BillingAccountResponse.getBillingAccountResponse;
 import srs.customerservice.Services.Mappers.BillingAccountMapper;
@@ -45,6 +47,23 @@ public class BillingAccountServiceImpl implements BillingAccountService {
         Page<getAllBillingAccountResponse> responsePage = response.map(billingAccount ->
                 BillingAccountMapper.INSTANCE.getAllBillingAccountResponse(billingAccount));
         return new PageInfoResponse<>(responsePage);
+    }
+
+    @Override
+    public createdBillingAccountResponse add(createBillingAccountRequest createBillingAccountRequest) {
+
+
+        BillingAccount billingAccount =
+                BillingAccountMapper.INSTANCE.billingAccountFromCreateBillingAccountRequest(createBillingAccountRequest);
+
+        BillingAccount createdBillingAccount =
+                billingAccountRepository.save(billingAccount);
+
+        createdBillingAccountResponse createdBillingAccountResponse =
+                BillingAccountMapper.INSTANCE.createdBillingAccountResponseFromBillingAccount(createdBillingAccount);
+
+        return createdBillingAccountResponse;
+
     }
 
 
