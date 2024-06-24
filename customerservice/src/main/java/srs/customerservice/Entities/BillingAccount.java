@@ -20,6 +20,16 @@ public class BillingAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int  id;
 
+
+    /*
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+     */
+
+
     @Column(name="status")
     private boolean status;
 
@@ -31,12 +41,16 @@ public class BillingAccount {
 
     @Column(name="type")
     private String type;
-
+/*
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
+ */
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "customers")
@@ -15,6 +16,8 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int  id;
+
+
     @Column(name="customer_id")
     private int customerID;
 
@@ -45,7 +48,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contact> contacts;
 
-
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BillingAccount> billingAccounts;
 
     public Customer() {
     }
