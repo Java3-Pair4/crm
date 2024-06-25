@@ -8,5 +8,5 @@ public interface ProductServices {
     List<Product> getAllProducts();
 
     Product getProductById(int id);
-
+  //  List<Product> searchProducts(Long catalogId, int productId, String productName);
 }

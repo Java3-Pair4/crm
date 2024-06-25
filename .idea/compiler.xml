@@ -9,6 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="BillingAccountService" />
         <module name="gatewayserver" />
+        <module name="common" />
+        <module name="authserver" />
         <module name="discoveryserver" />
         <module name="basketservice" />
         <module name="orderservice" />
@@ -39,7 +41,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BillingAccountService" options="-parameters" />
+      <module name="authserver" options="-parameters" />
       <module name="basketservice" options="-parameters" />
+      <module name="common" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="discoveryserver" options="-parameters" />
       <module name="gatewayserver" options="-parameters" />

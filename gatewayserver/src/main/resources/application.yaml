@@ -16,6 +16,10 @@ spring:
           uri: lb://customer-service
           predicates:
             - Path=/api/v1/customers/**
+        - id: basket-service
+          uri: lb://basket-service
+          predicates:
+            - Path=/api/v1/baskets/**
         - id: eureka
           uri: http://localhost:8888
           predicates:
