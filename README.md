@@ -1,4 +1,5 @@
-# crm
+# Turkcel GYGY Program Final Projesi
+## CRM Uygulaması
 
 ## Servisler
 
@@ -8,6 +9,11 @@ Servisleri çalıştırırken ilk olarak discoveryserver çalıştırmak gerekiy
 - Gateway Service
 - Customer Service
 - ... ve diğer servisler
+-
+## Gereksinimler
+- Java 17 veya üstü
+- PostgreSQL
+- Docker
 
 ## İletişim
 Proje ekibi ile ilgili sorularınız veya önerileriniz için aşağıdaki kişilerle iletişime geçebilirsiniz:
