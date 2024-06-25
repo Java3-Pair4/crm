@@ -1,4 +1,4 @@
-package com.turkcell.basketservice.entities.repository;
+package com.turkcell.basketservice.repository;
 
 import com.turkcell.basketservice.entities.BasketItem;
 import org.springframework.data.jpa.repository.JpaRepository;
