@@ -1,4 +1,4 @@
-# Turkcel GYGY Program Final Projesi
+# Turkcell GYGY Program Final Projesi
 ## CRM Uygulaması
 
 ## Servisler
