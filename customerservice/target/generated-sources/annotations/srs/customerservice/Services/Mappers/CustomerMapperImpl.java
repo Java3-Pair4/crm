@@ -13,7 +13,7 @@ import srs.customerservice.Services.DTOs.Response.getContactResponse;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-24T20:53:13+0300",
+    date = "2024-06-27T14:22:10+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {

@@ -1,7 +1,8 @@
-package com.turkcell.authserver.services.dtos.Requests;
+package com.turkcell.authserver.services.dtos.requests;
+//kullanıcı kayıt olurken bana neler vericek.
+
 
 public class RegisterRequest {
-
     private String email;
     private String password;
     private String firstName;
