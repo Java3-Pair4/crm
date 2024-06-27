@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //spring securty burdan dönen değer ile çalışsın benim gerçekten böyle bir kullanıcım var mı yok mu diye.
+
         return null;
     }
 }

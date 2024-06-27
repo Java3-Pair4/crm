@@ -28,9 +28,9 @@ public class AuthServiceImpl implements AuthService {
         user.setEmail(request.getEmail());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
-        //Hasing yapmamız lazım.
+
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        //Hassas bilgiler veritabanına "PLAIN TEXT" olarak yazılmaz.
+
         userService.add(user);
     }
 

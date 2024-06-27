@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements UserDetails {
 
-    //tabloya alan eklemek bize kalmış.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
